@@ -38,7 +38,7 @@ class User extends CI_Controller {
     {
         $data = array(
             'title' => 'Update Data User',
-            'user' => $this->User_model->getById(),
+            'user' => $this->User_model->getById($id),
             'content' => 'admin/user/edit_form'
         );
         $this->load->view('admin/template/main',$data);

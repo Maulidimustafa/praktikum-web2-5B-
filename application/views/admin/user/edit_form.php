@@ -22,7 +22,7 @@
  </div> 
  <div class="mb-3">
  <label for="phone">PHONE</label>
- <input class="form-control" type="number" name="phone" value="<?=$user->phone;?>" placeholder="PHONE" required/> 
+ <input class="form-control" type="text" name="phone" value="<?=$user->phone;?>" placeholder="PHONE" required/> 
  </div>
  <div class="mb-3">
  <label for="email">EMAIL</label>

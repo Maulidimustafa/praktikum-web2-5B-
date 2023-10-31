@@ -15,10 +15,10 @@ class Surat_ajuan extends CI_Controller {
         $data = array(
             'title' => 'View Data Surat Pengajuan',
             'userlog' => infoLogin(),
-            'surat' => $this->db->where('is_active',1)->where('user_id',$user_id)->get('tb_template_surat')->result(),
+            'surat' => $this->db->where('is_active',1)->where('user_id',$user_id)->get('tb_surat_masuk')->result(),
             'content' => 'admin/surat_ajuan/index'
         );
-        $this->load->view('template_user/main',$data);
+        $this->load->view('admin/template/main',$data);
     }
 
     public function add()
@@ -28,11 +28,11 @@ class Surat_ajuan extends CI_Controller {
             'userlog' => infoLogin(),
             'content' => 'admin/surat_ajuan/add_form'
         );
-        $this->load->view('template_user/main',$data);
+        $this->load->view('admin/template/main',$data);
     }
     public function save()
     {
-        $this->Template_model->save();
+        $this->Template_model->saveAjuan();
         if($this->db->affected_rows()>0){
             $this->session->set_flashdata("success","Data Surat Masuk Berhasil Disimpan");
         }
@@ -44,10 +44,10 @@ class Surat_ajuan extends CI_Controller {
         $data = array(
             'title' => 'Update Data Surat Masuk',
             'userlog' => infoLogin(),
-            'surat' => $this->Template_model->getById($id),
+            'surat' => $this->Masuk_modul->getById($id),
             'content' => 'admin/surat_ajuan/edit_form'
         );
-        $this->load->view('template_user/main',$data);
+        $this->load->view('admin/template/main',$data);
     }
 
     public function edit()
@@ -59,7 +59,7 @@ class Surat_ajuan extends CI_Controller {
         function delete($id)
         {
             $this->Masuk_model->delete($id);
-            redirect('surat_ajuan');
+            redirect('admin/surat_ajuan');
         }
     }
 }
