@@ -4,7 +4,7 @@ class Templatesurat extends CI_Controller {
  public function __construct()
  {
  parent::__construct();
- $this->load->model("Template_model");
+ $this->load->model("Masuk_model");
  cek_login();
  
  $this->load->library('form_validation');
@@ -14,13 +14,13 @@ class Templatesurat extends CI_Controller {
  $data = array(
  'title' => 'View Data History',
  'userlog'=> infoLogin(),
-'template' => $this->Template_model->getAll(),
+'template' => $this->Masuk_model->getAll(),
  'content'=> 'Template_surat/index'
  );
  $this->load->view('template/main',$data);
  }
  public function surat_ajuan($id){
- $surat = $this->Template_model->getById($id);
+ $surat = $this->Masuk_model->getById($id);
  $nama = $surat->nama;
  $perihal = $surat->perihal;
  $date = $surat->tgl_kirim;
